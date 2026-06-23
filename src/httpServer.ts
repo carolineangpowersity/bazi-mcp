@@ -5,6 +5,10 @@ import { server } from './mcp.js';
 const app = express();
 app.use(express.json());
 
+app.get('/', (_req, res) => {
+  res.json({ status: 'ok', message: 'Bazi MCP server is running. Send POST requests to /mcp.' });
+});
+
 app.post('/mcp', async (req, res) => {
   const transport = new StreamableHTTPServerTransport({
     sessionIdGenerator: undefined,
